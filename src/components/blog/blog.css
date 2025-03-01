@@ -1,0 +1,7 @@
+.click-animation {
+    transition: transform 0.2s;
+}
+
+.click-animation:active {
+    transform: scale(0.9);
+}
