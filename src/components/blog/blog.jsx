@@ -1,7 +1,7 @@
 import { FaBookmark } from 'react-icons/fa';
 import './blog.css'; // Import the CSS file for the animation
 
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'; // Fix the import statement
 const Blog = ({ blog, handleBookmark }) => {
     const {title,cover, reading_time, author, author_img, posted_date, hashtags} = blog;
     return (
@@ -39,5 +39,5 @@ const Blog = ({ blog, handleBookmark }) => {
 Blog.propTypes = {
     blog: PropTypes.object.isRequired,
     handleBookmark: PropTypes.func.isRequired
-}
+};
 export default Blog;
