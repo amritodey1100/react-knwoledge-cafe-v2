@@ -1,31 +1,34 @@
 import React, { useEffect, useState } from "react";
 import Blog from "../blog/blog";
-import PropTypes from 'prop-types';
-const Blogs = ({handleBookmark}) => {
-    const [blogs, setBlogs] = useState([]);
+import PropTypes from "prop-types";
 
-    useEffect(() => {
-        fetch("/blogs.json")
-        .then((res) => res.json())
-        .then((data) => setBlogs(data));
-    }, []);
+const Blogs = ({ handleBookmark, handleMarkAsRead }) => {
+  const [blogs, setBlogs] = useState([]);
 
-    return (
-        <div className="md:w-2/3">
-            <h1 className="text-4xl">Blogs: {blogs.length}</h1>
-             {
-                blogs.map(blog => <Blog 
-                    key={blog.id} 
-                    blog={blog} 
-                    handleBookmark={handleBookmark}>
-                    </Blog>)
-             }
-        </div>
-    );
+  useEffect(() => {
+    fetch("/blogs.json")
+      .then((res) => res.json())
+      .then((data) => setBlogs(data));
+  }, []);
+
+  return (
+    <div className="md:w-2/3">
+      <h1 className="text-4xl">Blogs: {blogs.length}</h1>
+      {blogs.map((blog) => (
+        <Blog
+          key={blog.id}
+          blog={blog}
+          handleBookmark={handleBookmark}
+          handleMarkAsRead={handleMarkAsRead}
+        ></Blog>
+      ))}
+    </div>
+  );
 };
 
-Blogs.propTypes = {  
-    handleBookmark: PropTypes.func.isRequired
-}
+Blogs.propTypes = {
+  handleBookmark: PropTypes.func.isRequired,
+  handleMarkAsRead: PropTypes.func.isRequired,
+};
 
 export default Blogs;

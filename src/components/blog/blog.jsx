@@ -2,10 +2,10 @@ import { FaBookmark } from 'react-icons/fa';
 import './blog.css'; // Import the CSS file for the animation
 
 import PropTypes from 'prop-types'; // Fix the import statement
-const Blog = ({ blog, handleBookmark }) => {
+const Blog = ({ blog, handleBookmark, handleMarkAsRead }) => {
     const {title,cover, reading_time, author, author_img, posted_date, hashtags} = blog;
     return (
-        <div className='mb-20'>
+        <div className='mb-20 space-y-4'>
             <img className='w-full mb-8' src={cover} alt={`Cover Picture of the title ${title}`} />
             <div className='flex justify-between mb-4'>
                 <div className='flex items-center'>
@@ -33,11 +33,18 @@ const Blog = ({ blog, handleBookmark }) => {
                     ))
                 }
             </p>
+            <button 
+                className='text-purple-600 font-bold underline' 
+                onClick={() => handleMarkAsRead(reading_time)}
+            >
+                Mark As Read
+            </button>
         </div>
     );
 };
 Blog.propTypes = {
     blog: PropTypes.object.isRequired,
-    handleBookmark: PropTypes.func.isRequired
+    handleBookmark: PropTypes.func.isRequired,
+    handleMarkAsRead: PropTypes.func.isRequired
 };
 export default Blog;
