@@ -13,8 +13,10 @@ function App() {
     setBookmarks(newBookmarks);
   };
 
-  const handleMarkAsRead = (time) => {
-    setReadingTime(readingTime + time); // Fix the typo here
+  const handleMarkAsRead = (blogId, time) => {
+    setReadingTime(readingTime + time);
+    const newBookmarks = bookmarks.filter(bookmark => bookmark.id !== blogId);
+    setBookmarks(newBookmarks);
   };
 
   return (

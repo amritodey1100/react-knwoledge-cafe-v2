@@ -3,7 +3,7 @@ import './blog.css'; // Import the CSS file for the animation
 
 import PropTypes from 'prop-types'; // Fix the import statement
 const Blog = ({ blog, handleBookmark, handleMarkAsRead }) => {
-    const {title,cover, reading_time, author, author_img, posted_date, hashtags} = blog;
+    const { id, title, cover, reading_time, author, author_img, posted_date, hashtags } = blog;
     return (
         <div className='mb-20 space-y-4'>
             <img className='w-full mb-8' src={cover} alt={`Cover Picture of the title ${title}`} />
@@ -35,7 +35,7 @@ const Blog = ({ blog, handleBookmark, handleMarkAsRead }) => {
             </p>
             <button 
                 className='text-purple-600 font-bold underline' 
-                onClick={() => handleMarkAsRead(reading_time)}
+                onClick={() => handleMarkAsRead(id, reading_time)}
             >
                 Mark As Read
             </button>
